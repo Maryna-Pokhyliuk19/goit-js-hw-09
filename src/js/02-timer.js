@@ -4,21 +4,20 @@ import 'notiflix/dist/notiflix-3.2.5.min.css';
 import Notiflix from 'notiflix';
 
 flatpickr("#datetime-picker", {
- enableTime: true,
-  time_24hr: true,
-  defaultDate: new Date(),
-  minuteIncrement: 1,
+    enableTime: true,
+    time_24hr: true,
+    defaultDate: new Date(),
+    minuteIncrement: 1,
     onClose(selectedDates) {
         timer.targetTime = selectedDates[0].getTime()
         if (timer.targetTime < Date.now()) {
             Notiflix.Notify.failure(`wrong date`)
-return
+            return
         }
         refs.buttonStart.disabled = false
         
-  },
+    },
 });
-
 
 const refs = {
     buttonStart: document.querySelector('button[data-start]'),
